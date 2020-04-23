@@ -133,6 +133,18 @@ eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! expr
 
 /***/ }),
 
+/***/ "./src/app/routers/index.ts":
+/*!**********************************!*\
+  !*** ./src/app/routers/index.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\nexports.__esModule = true;\nvar user_1 = __webpack_require__(/*! ./user */ \"./src/app/routers/user.ts\");\nvar group_1 = __webpack_require__(/*! ./group */ \"./src/app/routers/group.ts\");\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.use(user_1.router);\nexports.router.use(group_1.router);\n\n\n//# sourceURL=webpack:///./src/app/routers/index.ts?");
+
+/***/ }),
+
 /***/ "./src/app/routers/user.ts":
 /*!*********************************!*\
   !*** ./src/app/routers/user.ts ***!
@@ -153,7 +165,7 @@ eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! expr
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar express = __webpack_require__(/*! express */ \"express\");\nvar user_1 = __webpack_require__(/*! ./app/routers/user */ \"./src/app/routers/user.ts\");\nvar group_1 = __webpack_require__(/*! ./app/routers/group */ \"./src/app/routers/group.ts\");\nvar app = express();\napp.use(express.json());\nvar _a = process.env.PORT, PORT = _a === void 0 ? 3000 : _a;\n// root '/' is missing\n/*\napp.get('/', async (req: Request, res: Response) => {\n  res.json({\n    message: 'hello world',\n  });\n});\n*/\napp.use(user_1.router); // USER\napp.use(group_1.router); //GROUP\napp.listen(PORT, function () {\n    console.log(\"server started at http://localhost:\" + PORT);\n});\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\nexports.__esModule = true;\nvar express = __webpack_require__(/*! express */ \"express\");\nvar index_1 = __webpack_require__(/*! ./app/routers/index */ \"./src/app/routers/index.ts\");\nvar app = express();\napp.use(express.json());\nvar _a = process.env.PORT, PORT = _a === void 0 ? 3000 : _a;\napp.use(index_1.router);\napp.listen(PORT, function () {\n    console.log(\"server started at http://localhost:\" + PORT);\n});\n\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
