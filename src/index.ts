@@ -1,8 +1,8 @@
 import * as express from 'express';
-import { Request, Response, Application } from 'express';
-import { database } from './lib/database';
-import { User } from './app/models/user';
-import { Group } from './app/models/group';
+import { /*Request, Response,*/ Application } from 'express'; // átkerült a kontrollerbe
+// import { database } from './lib/database'; // átkerült a kontrollerbe
+// import { User } from './app/models/user';  // átkerült a kontrollerbe
+// import { Group } from './app/models/group';// átkerült a kontrollerbe
 import * as userController from './app/controllers/user';
 import * as groupController from './app/controllers/group';
 
