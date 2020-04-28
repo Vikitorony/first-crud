@@ -2,6 +2,7 @@ import { User } from "../models/user";
 import { database } from "../../lib/database";
 import { Request, Response } from "express";
 import * as userSerializer from '../serializers/user';
+import * as bcrypt from 'bcrypt';
 
 // index action
 export const index = async (req: Request, res: Response) => {
@@ -27,10 +28,13 @@ export const show = async (req: Request, res: Response) => {
 // create action
 export const create = async (req: Request, res: Response) => {
   try {
+    const encryptedPassword = bcrypt.hashSync(req.body.password, 10);
+    console.log('REQ', req.body.password, "HASH", encryptedPassword);
     const user: User = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
+      password: encryptedPassword,
       age: req.body.age
     }
     await database('users').insert(user);

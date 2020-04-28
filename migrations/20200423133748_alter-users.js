@@ -1,7 +1,7 @@
 
 exports.up = (knex) => {
   return knex.schema.table('users', (table) => {
-    table.integer('group_id').unsigned().references('groups.id');
+    table.integer('groupId').unsigned().references('groups.id');
   });
 };
 

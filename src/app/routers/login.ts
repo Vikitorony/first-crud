@@ -3,4 +3,4 @@ import * as loginController from '../controllers/login';
 
 export const router: Router = Router({ mergeParams: true });
 
-router.post('/login', loginController.create);           // create
+router.post('/', loginController.create);           // create
