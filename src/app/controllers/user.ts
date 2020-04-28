@@ -6,7 +6,7 @@ import * as userSerializer from '../serializers/user';
 // index action
 export const index = async (req: Request, res: Response) => {
   const users: Array<User> = await database('users').select();
-  res.json(users);
+  res.json(userSerializer.index(users));
 }
 
 // show action

@@ -6,6 +6,7 @@ export interface User {
   email: string;
   age: number;
   groupId?: number;
+  role?: string;
   created_at?: string;
   updated_at?: string;
 }
