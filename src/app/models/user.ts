@@ -5,6 +5,7 @@ export interface User {
   lastName: string;
   email: string;
   age: number;
+  groupId?: number;
   created_at?: string;
   updated_at?: string;
 }
