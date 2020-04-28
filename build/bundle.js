@@ -141,7 +141,7 @@ eval("\nvar __awaiter = (this && this.__awaiter) || function (thisArg, _argument
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nvar groupController = __webpack_require__(/*! ../controllers/group */ \"./src/app/controllers/group.ts\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.get('/group', groupController.index); // index\nexports.router.get('/group/:id', groupController.show); // show\nexports.router.post('/group', groupController.create); // create\nexports.router.put('/group/:id', groupController.update); // update\nexports.router[\"delete\"]('/group/:id', groupController.destroy); // delete\n\n\n//# sourceURL=webpack:///./src/app/routers/group.ts?");
+eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nvar groupController = __webpack_require__(/*! ../controllers/group */ \"./src/app/controllers/group.ts\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.get('/', groupController.index); // index\nexports.router.get('/:id', groupController.show); // show\nexports.router.post('/', groupController.create); // create\nexports.router.put('/:id', groupController.update); // update\nexports.router[\"delete\"]('/:id', groupController.destroy); // delete\n\n\n//# sourceURL=webpack:///./src/app/routers/group.ts?");
 
 /***/ }),
 
@@ -153,7 +153,7 @@ eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! expr
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nvar groupUserController = __webpack_require__(/*! ../controllers/groupUser */ \"./src/app/controllers/groupUser.ts\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.get('/group/:groupId/user', groupUserController.index); // index\nexports.router.get('/group/:groupId/user/:id', groupUserController.show); // show\nexports.router.post('/group/:groupId/user', groupUserController.create); // create\nexports.router.put('/group/:groupId/user/:id', groupUserController.update); // update\nexports.router[\"delete\"]('/group/:groupId/user/:id', groupUserController.destroy); // delete\n// const groupUserCommentAttachmentController\n// router.get('/group/:groupId/user/:userId/comment/:commentId/attachment/:attachmentId', groupUserCommentAttachmentController.show);\n\n\n//# sourceURL=webpack:///./src/app/routers/groupUser.ts?");
+eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nvar groupUserController = __webpack_require__(/*! ../controllers/groupUser */ \"./src/app/controllers/groupUser.ts\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.get('/', groupUserController.index); // index\nexports.router.get('/:id', groupUserController.show); // show\nexports.router.post('/', groupUserController.create); // create\nexports.router.put('/:id', groupUserController.update); // update\nexports.router[\"delete\"]('/:id', groupUserController.destroy); // delete\n// const groupUserCommentAttachmentController\n// router.get('/:userId/comment/:commentId/attachment/:attachmentId', groupUserCommentAttachmentController.show);\n\n\n//# sourceURL=webpack:///./src/app/routers/groupUser.ts?");
 
 /***/ }),
 
@@ -165,7 +165,7 @@ eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! expr
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar user_1 = __webpack_require__(/*! ./user */ \"./src/app/routers/user.ts\");\nvar group_1 = __webpack_require__(/*! ./group */ \"./src/app/routers/group.ts\");\nvar groupUser_1 = __webpack_require__(/*! ./groupUser */ \"./src/app/routers/groupUser.ts\");\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.use(user_1.router);\nexports.router.use(group_1.router);\nexports.router.use(groupUser_1.router);\n\n\n//# sourceURL=webpack:///./src/app/routers/index.ts?");
+eval("\nexports.__esModule = true;\nvar user_1 = __webpack_require__(/*! ./user */ \"./src/app/routers/user.ts\");\nvar group_1 = __webpack_require__(/*! ./group */ \"./src/app/routers/group.ts\");\nvar groupUser_1 = __webpack_require__(/*! ./groupUser */ \"./src/app/routers/groupUser.ts\");\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.use('/user', user_1.router);\nexports.router.use('/group', group_1.router);\nexports.router.use('/group/:groupId/user', groupUser_1.router);\n\n\n//# sourceURL=webpack:///./src/app/routers/index.ts?");
 
 /***/ }),
 
@@ -177,7 +177,7 @@ eval("\nexports.__esModule = true;\nvar user_1 = __webpack_require__(/*! ./user 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nvar userController = __webpack_require__(/*! ../controllers/user */ \"./src/app/controllers/user.ts\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.get('/user', userController.index); // index\nexports.router.get('/user/:id', userController.show); // show\nexports.router.post('/user', userController.create); // create\nexports.router.put('/user/:id', userController.update); // update\nexports.router[\"delete\"]('/user/:id', userController.destroy); // delete\n\n\n//# sourceURL=webpack:///./src/app/routers/user.ts?");
+eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nvar userController = __webpack_require__(/*! ../controllers/user */ \"./src/app/controllers/user.ts\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.get('/', userController.index); // index\nexports.router.get('/:id', userController.show); // show\nexports.router.post('/', userController.create); // create\nexports.router.put('/:id', userController.update); // update\nexports.router[\"delete\"]('/:id', userController.destroy); // delete\n\n\n//# sourceURL=webpack:///./src/app/routers/user.ts?");
 
 /***/ }),
 

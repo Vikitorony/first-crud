@@ -4,6 +4,6 @@ import { router as groupUserRouter } from './groupUser';
 import { Router } from 'express';
 
 export const router: Router = Router({ mergeParams: true });
-router.use(userRouter);
-router.use(groupRouter);
-router.use(groupUserRouter);
+router.use('/user', userRouter);
+router.use('/group', groupRouter);
+router.use('/group/:groupId/user', groupUserRouter);
