@@ -188,7 +188,7 @@ eval("\nexports.__esModule = true;\nvar express_1 = __webpack_require__(/*! expr
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar user_1 = __webpack_require__(/*! ./user */ \"./src/app/routers/user.ts\");\nvar group_1 = __webpack_require__(/*! ./group */ \"./src/app/routers/group.ts\");\nvar groupUser_1 = __webpack_require__(/*! ./groupUser */ \"./src/app/routers/groupUser.ts\");\nvar login_1 = __webpack_require__(/*! ./login */ \"./src/app/routers/login.ts\");\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.use('/user', user_1.router);\nexports.router.use('/group', group_1.router);\nexports.router.use('/group/:groupId/user', groupUser_1.router);\nexports.router.use('/login', login_1.router);\n\n\n//# sourceURL=webpack:///./src/app/routers/index.ts?");
+eval("\nexports.__esModule = true;\nvar user_1 = __webpack_require__(/*! ./user */ \"./src/app/routers/user.ts\");\nvar group_1 = __webpack_require__(/*! ./group */ \"./src/app/routers/group.ts\");\nvar groupUser_1 = __webpack_require__(/*! ./groupUser */ \"./src/app/routers/groupUser.ts\");\nvar login_1 = __webpack_require__(/*! ./login */ \"./src/app/routers/login.ts\");\nvar express_1 = __webpack_require__(/*! express */ \"express\");\nexports.router = express_1.Router({ mergeParams: true });\nexports.router.use('/login', login_1.router);\nexports.router.use('/user', user_1.router);\nexports.router.use('/group', group_1.router);\nexports.router.use('/group/:groupId/user', groupUser_1.router);\n\n\n//# sourceURL=webpack:///./src/app/routers/index.ts?");
 
 /***/ }),
 
