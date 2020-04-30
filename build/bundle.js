@@ -108,6 +108,17 @@ eval("module.exports = JSON.parse(\"{\\\"secret\\\":\\\"abc123\\\"}\");\n\n//# s
 
 /***/ }),
 
+/***/ "./config/swagger.json":
+/*!*****************************!*\
+  !*** ./config/swagger.json ***!
+  \*****************************/
+/*! exports provided: swagger, info, schemes, consumes, produces, paths, definitions, default */
+/***/ (function(module) {
+
+eval("module.exports = JSON.parse(\"{\\\"swagger\\\":\\\"2.0\\\",\\\"info\\\":{\\\"title\\\":\\\"Theta Express\\\",\\\"version\\\":\\\"1.0.0\\\"},\\\"schemes\\\":[\\\"http\\\"],\\\"consumes\\\":[\\\"application/json\\\"],\\\"produces\\\":[\\\"application/json\\\"],\\\"paths\\\":{\\\"/group\\\":{\\\"get\\\":{\\\"summary\\\":\\\"GET all groups\\\",\\\"parameters\\\":[{\\\"in\\\":\\\"header\\\",\\\"name\\\":\\\"Authorization\\\",\\\"type\\\":\\\"string\\\"},{\\\"in\\\":\\\"query\\\",\\\"name\\\":\\\"q\\\",\\\"type\\\":\\\"string\\\"}],\\\"responses\\\":{\\\"200\\\":{\\\"description\\\":\\\"\\\",\\\"schema\\\":{\\\"type\\\":\\\"array\\\",\\\"items\\\":{\\\"$ref\\\":\\\"#definitions/Group\\\"}}}}},\\\"post\\\":{\\\"summary\\\":\\\"CREATE group\\\",\\\"parameters\\\":[{\\\"in\\\":\\\"header\\\",\\\"name\\\":\\\"Authorization\\\",\\\"type\\\":\\\"string\\\"},{\\\"in\\\":\\\"body\\\",\\\"name\\\":\\\"body\\\",\\\"schema\\\":{\\\"properties\\\":{\\\"name\\\":{\\\"type\\\":\\\"string\\\"},\\\"description\\\":{\\\"type\\\":\\\"string\\\"},\\\"location\\\":{\\\"type\\\":\\\"string\\\"},\\\"maximalSize\\\":{\\\"type\\\":\\\"integer\\\"}},\\\"required\\\":[\\\"name\\\",\\\"description\\\",\\\"location\\\",\\\"maximalSize\\\"]}}],\\\"responses\\\":{\\\"201\\\":{\\\"description\\\":\\\"\\\"}}}},\\\"/group/{id}\\\":{\\\"get\\\":{\\\"summary\\\":\\\"GET group by ID\\\",\\\"parameters\\\":[{\\\"in\\\":\\\"header\\\",\\\"name\\\":\\\"Authorization\\\",\\\"type\\\":\\\"string\\\"}],\\\"responses\\\":{\\\"200\\\":{\\\"description\\\":\\\"Return with Group object\\\",\\\"schema\\\":{\\\"$ref\\\":\\\"#definitions/Group\\\"}}}},\\\"put\\\":{\\\"summary\\\":\\\"Modify group by ID\\\",\\\"parameters\\\":[{\\\"in\\\":\\\"header\\\",\\\"name\\\":\\\"Authorization\\\",\\\"type\\\":\\\"string\\\"}],\\\"responses\\\":{\\\"200\\\":{\\\"description\\\":\\\"\\\"}}},\\\"delete\\\":{\\\"summary\\\":\\\"Delete group by ID\\\",\\\"parameters\\\":[{\\\"in\\\":\\\"header\\\",\\\"name\\\":\\\"Authorization\\\",\\\"type\\\":\\\"string\\\"}],\\\"responses\\\":{\\\"204\\\":{\\\"description\\\":\\\"\\\"}}}}},\\\"definitions\\\":{\\\"Group\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"id\\\":{\\\"type\\\":\\\"integer\\\"},\\\"name\\\":{\\\"type\\\":\\\"string\\\"},\\\"description\\\":{\\\"type\\\":\\\"string\\\"},\\\"location\\\":{\\\"type\\\":\\\"string\\\"},\\\"maximalSize\\\":{\\\"type\\\":\\\"integer\\\"}}}}}\");\n\n//# sourceURL=webpack:///./config/swagger.json?");
+
+/***/ }),
+
 /***/ "./src/app/controllers/group.ts":
 /*!**************************************!*\
   !*** ./src/app/controllers/group.ts ***!
@@ -248,7 +259,7 @@ eval("\nexports.__esModule = true;\n;\nexports.show = function (user) {\n    ret
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nexports.__esModule = true;\nvar express = __webpack_require__(/*! express */ \"express\");\nvar index_1 = __webpack_require__(/*! ./app/routers/index */ \"./src/app/routers/index.ts\");\nvar auth_1 = __webpack_require__(/*! ./lib/auth */ \"./src/lib/auth.ts\");\nvar app = express();\napp.use(express.json());\nvar _a = process.env.PORT, PORT = _a === void 0 ? 3000 : _a;\napp.use(auth_1.authentication);\napp.use(index_1.router);\napp.listen(PORT, function () {\n    console.log(\"server started at http://localhost:\" + PORT);\n});\n\n\n//# sourceURL=webpack:///./src/index.ts?");
+eval("\nexports.__esModule = true;\nvar express = __webpack_require__(/*! express */ \"express\");\nvar index_1 = __webpack_require__(/*! ./app/routers/index */ \"./src/app/routers/index.ts\");\nvar auth_1 = __webpack_require__(/*! ./lib/auth */ \"./src/lib/auth.ts\");\nvar createMiddleware = __webpack_require__(/*! swagger-express-middleware */ \"swagger-express-middleware\");\nvar swaggerUi = __webpack_require__(/*! swagger-ui-express */ \"swagger-ui-express\");\nvar swaggerDocument = __webpack_require__(/*! ../config/swagger.json */ \"./config/swagger.json\");\nvar app = express();\napp.use(express.json());\ncreateMiddleware('config/swagger.json', app, function (err, middleware) {\n    if (err) {\n        console.error(err);\n    }\n    app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));\n    app.use(middleware.metadata());\n    app.use(middleware.CORS());\n    app.use(middleware.parseRequest());\n    app.use(middleware.validateRequest());\n    var _a = process.env.PORT, PORT = _a === void 0 ? 3000 : _a;\n    app.use(auth_1.authentication);\n    app.use(index_1.router);\n    app.listen(PORT, function () {\n        console.log(\"server started at http://localhost:\" + PORT);\n    });\n});\n\n\n//# sourceURL=webpack:///./src/index.ts?");
 
 /***/ }),
 
@@ -317,6 +328,28 @@ eval("module.exports = require(\"jsonwebtoken\");\n\n//# sourceURL=webpack:///ex
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"knex\");\n\n//# sourceURL=webpack:///external_%22knex%22?");
+
+/***/ }),
+
+/***/ "swagger-express-middleware":
+/*!*********************************************!*\
+  !*** external "swagger-express-middleware" ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"swagger-express-middleware\");\n\n//# sourceURL=webpack:///external_%22swagger-express-middleware%22?");
+
+/***/ }),
+
+/***/ "swagger-ui-express":
+/*!*************************************!*\
+  !*** external "swagger-ui-express" ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"swagger-ui-express\");\n\n//# sourceURL=webpack:///external_%22swagger-ui-express%22?");
 
 /***/ })
 
