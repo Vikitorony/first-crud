@@ -191,6 +191,38 @@
           }
         }
       }
+    },
+    "/user": {
+      "get": {
+        "summary": "Get all users",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "q",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "post": {}
+    },
+    "/user/{id}": {
+
     }
   },
   "definitions": {
@@ -236,6 +268,23 @@
         "location",
         "maximalSize"
       ]
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        }
+      }
     }
   }
 }
