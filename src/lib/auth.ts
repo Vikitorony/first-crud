@@ -28,7 +28,7 @@ const anonymousEndpoints: Array<AnonymousEndpoint> = [
 ]
 
 // sophisticated auth
-const isAnonymousEndpoint = (req: Request): boolean => {
+/* const isAnonymousEndpoint = (req: Request): boolean => {
   const path = req.path;
   const method = req.method;
   for (let anonymousEndpoint of anonymousEndpoints) {
@@ -37,14 +37,13 @@ const isAnonymousEndpoint = (req: Request): boolean => {
     }
   }
   return false;
-}
+} */
 
 // more sophisticated auth
-/* 
 const isAnonymousEndpoint = (req: Request): boolean => {
   return !!(anonymousEndpoints.find(anonymousEndpoint => (anonymousEndpoint.path === req.path && anonymousEndpoint.method === req.method)))
 }
- */
+
 
 export const authentication = async (req: Request, res: Response, next: NextFunction) => {
   if (isAnonymousEndpoint(req)) {

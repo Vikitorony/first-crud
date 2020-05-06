@@ -1,6 +1,7 @@
 import { Group } from "../models/group";
 import { database } from "../../lib/database";
 import { Request, Response, NextFunction } from "express";
+import { QueryBuilder } from "knex";
 
 
 export const authorization = (req: Request, res: Response, next: NextFunction) => {
@@ -11,9 +12,17 @@ export const authorization = (req: Request, res: Response, next: NextFunction) =
   }
 }
 
-// index action
+// index action  // GET /group?limit=10?offset=0
 export const index = async (req: Request, res: Response) => {
-  const groups: Array<Group> = await database('groups').select();
+  let query: QueryBuilder = database('groups').select();
+  if (req.query.limit) {
+    query = query.limit(req.query.limit);
+  }
+  if (req.query.offset) {
+    query = query.offset(req.query.offset)
+  }
+
+  const groups: Array<Group> = await query;
   res.json(groups);
 }
 
