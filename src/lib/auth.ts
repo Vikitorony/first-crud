@@ -4,8 +4,42 @@ import { database } from "./database";
 import * as jwt from "jsonwebtoken";
 import * as jwtConfig from "../../config/jwt.json"
 
+enum Method {
+  get = 'GET',
+  post = 'POST',
+  put = 'PUT',
+  destroy = 'DELETE'
+}
+
+interface AnonymousEndpoint {
+  path: string;
+  method: Method;
+}
+
+const anonymousEndpoints: Array<AnonymousEndpoint> = [
+  {
+    path: '/user',
+    method: Method.post
+  },
+  {
+    path: '/login',
+    method: Method.post
+  }
+]
+
+const isAnonymousEndpoint = (req: Request): boolean => {
+  const path = req.path;
+  const method = req.method;
+  for (let anonymousEndpoint of anonymousEndpoints) {
+    if (anonymousEndpoint.path === path && anonymousEndpoint.method === method) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export const authentication = async (req: Request, res: Response, next: NextFunction) => {
-  if ((req.path.endsWith('/user') || req.path.endsWith('/login')) && req.method === 'POST') {
+  if (isAnonymousEndpoint(req)) {
     return next();
   }
   try {
